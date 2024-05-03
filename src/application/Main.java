@@ -27,15 +27,6 @@ public class Main extends Application {
 			//Make window non-resizable
 			primaryStage.setResizable(false);
 			
-			//Increase current window size by double
-			double width = primaryStage.getWidth();
-			double height = primaryStage.getHeight();
-			primaryStage.setHeight(height*2);
-			primaryStage.setWidth(width*2);
-			
-			//Scale objects to fit new size
-			Scale scale = new Scale(2, 2, 0, 0);
-			mainBox.getTransforms().add(scale);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
