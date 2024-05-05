@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
@@ -27,6 +28,7 @@ public class CreateAssetController {
 	@FXML private DatePicker warranty_date;
 	@FXML private TextArea asset_descr;
 	@FXML private Label result_message;
+	@FXML private CheckBox favorited;
 	private DataAccessLayer DAL = new DataAccessLayer();
 	//private String selectedCategory;
 	
@@ -50,6 +52,12 @@ public class CreateAssetController {
 		categoryType.setPromptText("Select a Category...");
 		locationType.setPromptText("Select a Location..");
 		
+		categoryType.setStyle("-fx-font-size: 24;");
+		locationType.setStyle("-fx-font-size: 24;");
+		
+		purchase_date.setStyle("-fx-font-size: 24;");
+		warranty_date.setStyle("-fx-font-size: 24;");
+		
 		//populate Categories and Locations combobox with existing data
 		categoryType.getItems().addAll(categoryNames);
 		locationType.getItems().addAll(locationNames);
@@ -65,6 +73,7 @@ public class CreateAssetController {
 		String descr = "_EMPTY_";
 		String purchval = "_EMPTY_";
 		String expdate = "_EMPTY_";
+		boolean favorite = favorited.isSelected();
 
 		// if user filled out category
 		if (categoryType.getValue() != null) {
@@ -118,8 +127,8 @@ public class CreateAssetController {
 		else
 		{
 			//create asset object and store name
-			Asset newAsset = new Asset(assetName, category, location, purchdate, descr, purchval, expdate);
-			
+			Asset newAsset = new Asset(assetName, category, location, purchdate, descr, purchval, expdate, favorite);
+
 			//called addAsset function using location object and DAL object
 			int result = DAL.addAsset(newAsset);
 			
@@ -128,6 +137,14 @@ public class CreateAssetController {
 				case 0:
 				// if addAsset returns 0, display success message
 				result_message.setText("Asset added successfully!");
+				
+				// add to commonObjs recentlyAdded assets
+				commonObjs.getRecentAssets().addFirst(newAsset);
+				
+				if(newAsset.getFavorited())
+				{
+					commonObjs.getFavoriteAssets().add(newAsset);
+				}
 				break;
 
 				case 1:

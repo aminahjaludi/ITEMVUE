@@ -7,9 +7,10 @@ public class Asset
 	private String category, location;
 	private String purchaseDate, description;
 	private String purchaseVal, warrantyDate;
+	private boolean favorited;
 	
 	//default constructor, assign class members with default values
-	public Asset(String name, String cat, String loc, String purDate, String descr, String cost, String expDate)
+	public Asset(String name, String cat, String loc, String purDate, String descr, String cost, String expDate, boolean favorite)
 	{
 		this.assetName = name;
 		this.category = cat;
@@ -18,6 +19,7 @@ public class Asset
 		this.description = descr;
 		this.purchaseVal = cost;
 		this.warrantyDate = expDate;
+		this.favorited = favorite;
 	}
 	
 	//create mutators and accessors for all class members
@@ -89,5 +91,13 @@ public class Asset
 	public void setExpDate(String expDate)
 	{
 		this.warrantyDate = expDate;
+	}
+
+	public boolean getFavorited() {
+		return favorited;
+	}
+
+	public void setFavorited(boolean favorited) {
+		this.favorited = favorited;
 	}
 }

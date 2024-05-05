@@ -5,6 +5,8 @@ import application.Location;
 import application.Asset;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.time.LocalDate;
@@ -19,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
@@ -34,6 +37,7 @@ public class EditAssetController
 	@FXML private DatePicker warranty_date;
 	@FXML private TextArea asset_descr;
 	@FXML private Label result_message;
+	@FXML private CheckBox favorited;
 	
 	//initialize id for the EditAsset.fxml's AnchorPane //use for visibility
 	@FXML private AnchorPane editContainer;
@@ -59,6 +63,12 @@ public class EditAssetController
 		List<String> categoryNames = new ArrayList<>(categoriesMap.keySet());
 		List<String> locationNames = new ArrayList<>(locationsMap.keySet());
 		
+		categoryType.setStyle("-fx-font-size: 24;");
+		locationType.setStyle("-fx-font-size: 24;");
+		
+		purchase_date.setStyle("-fx-font-size: 24;");
+		warranty_date.setStyle("-fx-font-size: 24;");
+		
 		//populate comboboxes with Categories and Locations
 		categoryType.getItems().addAll(categoryNames);
 		locationType.getItems().addAll(locationNames);
@@ -77,13 +87,14 @@ public class EditAssetController
 	{
 		//initialize and store pre-existing Asset that will be edited
 		preAsset = asset;
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
 		
 		//Prompt all established Asset values 
 		asset_name.setText(preAsset.getAssetName());
 		categoryType.setPromptText(preAsset.getCategory());
 		locationType.setPromptText(preAsset.getLocation());
+		favorited.setSelected(asset.getFavorited());
 		
 		if (preAsset.getPurchDate().equals("_EMPTY_")) {
 			purchase_date.setValue(null);
@@ -131,7 +142,7 @@ public class EditAssetController
 		System.out.println(descr);
 		System.out.println(purchval);
 		System.out.println(expdate);
-
+		
 		//if user filled out the asset name
 		if(!asset_name.getText().equals(""))
 		{
@@ -205,8 +216,7 @@ public class EditAssetController
 		else
 		{
 			//create asset object and store name
-			Asset newAsset = new Asset(assetName, category, location, purchdate, descr, purchval, expdate);
-					
+			Asset newAsset = new Asset(assetName, category, location, purchdate, descr, purchval, expdate, favorited.isSelected());
 
 			//call editAssetData to delete the pre-existing Asset and add the newAsset
 			int result = DAL.editAssetData(preAsset, newAsset);
@@ -215,6 +225,26 @@ public class EditAssetController
 			switch (result) 
 			{
 				case 0:
+					//Remove old asset from favorites
+					
+					LinkedList<Asset> favorites = commonObjs.getFavoriteAssets();
+
+					for (Iterator<Asset> iterator = favorites.iterator(); iterator.hasNext(); ) 
+					{
+					    Asset value = iterator.next();
+					    
+					    if (preAsset.getAssetName().equals(value.getAssetName())) 
+					    {
+					        iterator.remove();
+					    }
+					}
+					
+					//Add asset to favorites if favorited is true
+					if(newAsset.getFavorited())
+					{
+						commonObjs.getFavoriteAssets().add(newAsset);
+					}
+					
 					mainController.showManageAssetOp();
 					// go back to the main manage asset page
 					

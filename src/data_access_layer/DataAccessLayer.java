@@ -269,11 +269,11 @@ public class DataAccessLayer {
        // initialize the string to store in file
        String dataline = asset.getAssetName()
        + "," + asset.getCategory() + "," + asset.getLocation() + "," + asset.getPurchDate() + "," + asset.getDescription() + "," 
-    		   + asset.getPurchVal() + "," + asset.getExpDate();
+    		   + asset.getPurchVal() + "," + asset.getExpDate() + "," + String.valueOf(asset.getFavorited());
         
        //check if the data contains additional commas
        long count = dataline.chars().filter(ch -> ch == ',').count();
-       if (count != 6) {
+       if (count != 7) {
            return 2;
        }
        //if here, no commas are in the data
@@ -326,8 +326,8 @@ public class DataAccessLayer {
                 	//store all Asset attributes into String array
                 	String[] data = line.split(",");
                
-                	//if the array has 7 items, csv is handling Asset data correctly
-                	if (data.length >= 7) 
+                	//if the array has 8 items, csv is handling Asset data correctly
+                	if (data.length >= 8) 
                 	{
                 		    //check if there are any attributes that are tagged empty, save as empty string
                         for (String item : data) 
@@ -339,7 +339,8 @@ public class DataAccessLayer {
                         }
 
                     //store Asset attributes from array into the HashMap
-                		tempMap.put(data[0], new Asset(data[0], data[1], data[2], data[3], data[4], data[5], data[6]));
+                		tempMap.put(data[0], new Asset(data[0], data[1], data[2], data[3], data[4], data[5], data[6], 
+                				Boolean.parseBoolean(data[7])));
                 	}
                 }
             }
@@ -416,7 +417,7 @@ public class DataAccessLayer {
     		{
     			//filewriter writes titles of asset's attributes
     			bw.write("Asset Name,Category,Location,Purchase Date,"
-    					+ "Description,Purchase Value,Warranty Expiration Date");
+    					+ "Description,Purchase Value,Warranty Expiration Date,Favorited");
     			bw.newLine();
     			//assign firstline to false
     			firstline = false;
@@ -429,7 +430,7 @@ public class DataAccessLayer {
         		//write to the file with new asset values
         		bw.write(Emap.getKey() + "," + Emap.getValue().getCategory()+ "," + Emap.getValue().getLocation()+ ","
         				+ Emap.getValue().getPurchDate()+ "," + Emap.getValue().getDescription() + "," + Emap.getValue().getPurchVal() 
-        				+ "," + Emap.getValue().getExpDate());
+        				+ "," + Emap.getValue().getExpDate() + "," + String.valueOf(Emap.getValue().getFavorited()));
         		//go to new line
         		bw.newLine();	
         	}

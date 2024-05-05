@@ -1,12 +1,18 @@
 package application;
+import java.util.LinkedList;
+
 import application.controller.MainController;
 import javafx.scene.layout.HBox;
 
 public class CommonObjs 
 {
 	private static CommonObjs commonObjs = new CommonObjs();
+	
 	private HBox mainBox;
 	private MainController mainController;
+	
+	private LinkedList<Asset> recentAssets;
+	private LinkedList<Asset> favoriteAssets;
 	
 	private CommonObjs()
 	{
@@ -32,6 +38,21 @@ public class CommonObjs
 	public void setMainController(MainController mainController) {
 		this.mainController = mainController;
 	}
-	
+
+	public LinkedList<Asset> getRecentAssets() {
+		return recentAssets;
+	}
+
+	public void setRecentAssets(LinkedList<Asset> recentAssets) {
+		this.recentAssets = recentAssets;
+	}
+
+	public LinkedList<Asset> getFavoriteAssets() {
+		return favoriteAssets;
+	}
+
+	public void setFavoriteAssets(LinkedList<Asset> favoriteAssets) {
+		this.favoriteAssets = favoriteAssets;
+	}
 	
 }

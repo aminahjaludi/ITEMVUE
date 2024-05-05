@@ -4,6 +4,8 @@ import application.Asset;
 import application.Category;
 import application.controller.EditAssetController;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -106,7 +108,6 @@ public class SearchAssetController
 		delete_button.setDisable(true);
 		prev_button.setDisable(true);
 		next_button.setDisable(true);
-		
 		
 	}
 
@@ -213,6 +214,30 @@ public class SearchAssetController
 	
 		//save the old name of the asset to be displayed later in the result_message
 		String name = currentAsset.getAssetName();
+
+		LinkedList<Asset> recents = commonObjs.getRecentAssets();
+
+		for (Iterator<Asset> iterator = recents.iterator(); iterator.hasNext(); ) 
+		{
+		    Asset value = iterator.next();
+		    
+		    if (currentAsset.getAssetName().equals(value.getAssetName())) 
+		    {
+		        iterator.remove();
+		    }
+		}
+		
+		LinkedList<Asset> favorites = commonObjs.getFavoriteAssets();
+
+		for (Iterator<Asset> iterator = favorites.iterator(); iterator.hasNext(); ) 
+		{
+		    Asset value = iterator.next();
+		    
+		    if (currentAsset.getAssetName().equals(value.getAssetName())) 
+		    {
+		        iterator.remove();
+		    }
+		}
 		
 		//call the deleteAssetData to remove the asset from hashmap and csv file
 		DAL.deleteAssetData(currentAsset);
