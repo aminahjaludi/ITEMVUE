@@ -13,6 +13,7 @@ public class CommonObjs
 	
 	private LinkedList<Asset> recentAssets;
 	private LinkedList<Asset> favoriteAssets;
+	private LinkedList<Asset> expiredAssets;
 	
 	private CommonObjs()
 	{
@@ -53,6 +54,14 @@ public class CommonObjs
 
 	public void setFavoriteAssets(LinkedList<Asset> favoriteAssets) {
 		this.favoriteAssets = favoriteAssets;
+	}
+
+	public LinkedList<Asset> getExpiredAssets() {
+		return expiredAssets;
+	}
+
+	public void setExpiredAssets(LinkedList<Asset> expiredAssets) {
+		this.expiredAssets = expiredAssets;
 	}
 	
 }
