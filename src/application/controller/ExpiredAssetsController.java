@@ -48,28 +48,7 @@ public class ExpiredAssetsController {
 	
 	@FXML public void showExpiredAssetInfoOp()
 	{
-		Asset selected_asset = expired_table.getSelectionModel().getSelectedItem();
 		
-		//If a row is selected, show asset info page
-		if(selected_asset != null)
-		{
-			URL url = getClass().getClassLoader().getResource("view/ExpiredAssetInfo.fxml");
-			
-			try {
-				AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
-				HBox mainBox = commonObjs.getMainBox();
-				
-				if(mainBox.getChildren().size() > 1)
-					mainBox.getChildren().remove(1);
-				
-				mainBox.getChildren().add(pane1);
-			} 
-			catch (IOException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 	
 }
