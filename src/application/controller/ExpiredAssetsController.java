@@ -1,0 +1,75 @@
+package application.controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collection;
+
+import application.Asset;
+import application.CommonObjs;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+public class ExpiredAssetsController {
+	
+	private CommonObjs commonObjs = CommonObjs.getInstance();
+
+	@FXML private TableView<Asset> expired_table;
+	@FXML private TableColumn<Asset,String> asset_name;
+	@FXML private TableColumn<Asset,String> asset_warranty;
+	
+	@FXML public void initialize()
+	{
+		//Set tables font size
+		expired_table.setStyle("-fx-font-size: 20;");
+		
+		//Set message for empty table
+		expired_table.setPlaceholder(new Label("No expired assets"));
+
+		Collection<Asset> expired_assets = commonObjs.getExpiredAssets();
+		
+		//Populate the expired assets table
+		PropertyValueFactory<Asset,String> pvf = 
+				new PropertyValueFactory<Asset,String>("assetName");
+		asset_name.setCellValueFactory(pvf);
+		
+		pvf = new PropertyValueFactory<Asset,String>("expDate");
+		asset_warranty.setCellValueFactory(pvf);
+		
+		expired_table.getItems().setAll(expired_assets);
+		
+	}
+	
+	@FXML public void showExpiredAssetInfoOp()
+	{
+		Asset selected_asset = expired_table.getSelectionModel().getSelectedItem();
+		
+		//If a row is selected, show asset info page
+		if(selected_asset != null)
+		{
+			URL url = getClass().getClassLoader().getResource("view/ExpiredAssetInfo.fxml");
+			
+			try {
+				AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
+				HBox mainBox = commonObjs.getMainBox();
+				
+				if(mainBox.getChildren().size() > 1)
+					mainBox.getChildren().remove(1);
+				
+				mainBox.getChildren().add(pane1);
+			} 
+			catch (IOException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}

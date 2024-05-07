@@ -6,7 +6,7 @@ public class Asset
 	private String assetName;
 	private String category, location;
 	private String purchaseDate, description;
-	private String purchaseVal, warrantyDate;
+	private String purchaseVal, expDate;
 	private boolean favorited;
 	
 	//default constructor, assign class members with default values
@@ -18,7 +18,7 @@ public class Asset
 		this.purchaseDate = purDate;
 		this.description = descr;
 		this.purchaseVal = cost;
-		this.warrantyDate = expDate;
+		this.expDate = expDate;
 		this.favorited = favorite;
 	}
 	
@@ -85,12 +85,12 @@ public class Asset
 
 	public String getExpDate()
 	{
-		return this.warrantyDate;
+		return this.expDate;
 	}
 
 	public void setExpDate(String expDate)
 	{
-		this.warrantyDate = expDate;
+		this.expDate = expDate;
 	}
 
 	public boolean getFavorited() {
@@ -100,4 +100,5 @@ public class Asset
 	public void setFavorited(boolean favorited) {
 		this.favorited = favorited;
 	}
+	
 }

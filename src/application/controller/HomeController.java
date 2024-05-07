@@ -1,8 +1,6 @@
 package application.controller;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
 
 import application.Asset;
 import application.CommonObjs;
@@ -56,7 +54,6 @@ public class HomeController {
 		pvf = new PropertyValueFactory<Asset,String>("category");
 		fave_category.setCellValueFactory(pvf);
 		
-		//favorites_table.getItems().setAll(favoriteAssets);
 		favorites_table.getItems().setAll(favorites);
 		
 		//Populate the recently added assets table
@@ -69,6 +66,7 @@ public class HomeController {
 		pvf = new PropertyValueFactory<Asset,String>("category");
 		recent_category.setCellValueFactory(pvf);
 		
-		recents_table.getItems().addAll(recently_added);
+		recents_table.getItems().setAll(recently_added);
 	}
+	
 }
