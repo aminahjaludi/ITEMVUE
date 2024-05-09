@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class ExpiredAlertController {
 
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private MainController mainController = commonObjs.getMainController();
 	@FXML private Button OKBtn;
 	@FXML private Button showMoreBtn;
 	@FXML private Label expiredAsset;
@@ -56,21 +57,29 @@ public class ExpiredAlertController {
 		closeWindowOp();
 	    
 	    //Show expired assets page
-	    HBox mainBox = commonObjs.getMainBox();
-	    URL url = getClass().getClassLoader().getResource("view/ExpiredAssets.fxml");
+		//go to the AssetInfo fxml page
+		mainController.showExpiredAssetsOp();
+				
+		//retrieve the AssetInfo loader 
+		//FXMLLoader infoLoader = mainController.getCurrentLoader();
+				    
+		//instantiate an AssetInfoController object to display the selected asset's attributes
+		//AssetInfoController assetInfoController = infoLoader.getController();
+	    //HBox mainBox = commonObjs.getMainBox();
+	    //URL url = getClass().getClassLoader().getResource("view/ExpiredAssets.fxml");
 		
-		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
+		//try {
+		//	AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
 			
-			if(mainBox.getChildren().size() > 1)
-				mainBox.getChildren().remove(1);
+		//	if(mainBox.getChildren().size() > 1)
+		//		mainBox.getChildren().remove(1);
 			
-			mainBox.getChildren().add(pane2);
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		//	mainBox.getChildren().add(pane2);
+		//} 
+		//catch (IOException e) 
+		//{
+			//e.printStackTrace();
+		//}
 	    
 	}
 	
