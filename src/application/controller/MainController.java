@@ -147,4 +147,38 @@ public class MainController {
 		}
 	}
 	
+	public void showExpiredAssetsOp() {
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/ExpiredAssets.fxml"));
+		currentLoader = loader;
+		try {
+			AnchorPane pane2 = (AnchorPane) loader.load();
+			
+			if(mainBox.getChildren().size() > 1)
+				mainBox.getChildren().remove(1);
+			
+			mainBox.getChildren().add(pane2);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void showAssetInfoOp() {
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/AssetInfo.fxml"));
+		currentLoader = loader;
+		try {
+			AnchorPane pane2 = (AnchorPane) loader.load();
+			
+			if(mainBox.getChildren().size() > 1)
+				mainBox.getChildren().remove(1);
+			
+			mainBox.getChildren().add(pane2);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
 }
