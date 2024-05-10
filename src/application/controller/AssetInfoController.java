@@ -60,7 +60,7 @@ public class AssetInfoController {
 		List<String> locationNames = new ArrayList<>(locationsMap.keySet());
 		
 		categoryType.setStyle("-fx-font-size: 24;");
-		locationType.setStyle("-fx-font-size: 24;");
+		//locationType.setStyle("-fx-font-size: 24;");
 		
 		purchase_date.setStyle("-fx-font-size: 24;");
 		warranty_date.setStyle("-fx-font-size: 24;");
@@ -76,17 +76,25 @@ public class AssetInfoController {
 		//instantiate DateTimeFormatter object to format the warranty and purchase dates
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
 		
+		//set the opacity greater than 0 so the text is not faded for the assets attributes
+		asset_name.setStyle("-fx-opacity: 1.0;");
+		categoryType.setStyle("-fx-font-size: 24; -fx-opacity: 4.0;");
+		locationType.setStyle("-fx-font-size: 24; -fx-opacity: 4.0;");
+		
+		
 		//Prompt all established Asset values 
 		asset_name.setText(selected.getAssetName());
 		categoryType.setPromptText(selected.getCategory());
 		locationType.setPromptText(selected.getLocation());
 		favorited.setSelected(selected.getFavorited());
 		
+		
 		if (selected.getPurchDate().equals("_EMPTY_")) {
 			purchase_date.setValue(null);
 		}
 		else {
 			purchase_date.setValue(LocalDate.parse(selected.getPurchDate(), formatter));
+			purchase_date.setStyle("-fx-font-size: 24; -fx-opacity: 4.0;");
 		}
 		
 		if (selected.getExpDate().equals("_EMPTY_")) {
@@ -94,16 +102,21 @@ public class AssetInfoController {
 		}
 		else {
 			warranty_date.setValue(LocalDate.parse(selected.getExpDate(), formatter));
+			warranty_date.setStyle("-fx-font-size: 24; -fx-opacity: 4.0;");
 		}
 		
-		if (selected.getDescription().equals("_EMPTY_"))
+		if (selected.getDescription().equals("_EMPTY_")) 
 			asset_descr.setText("");
-		else
+		else {
 			asset_descr.setText(selected.getDescription());
-		if (selected.getPurchVal().equals("_EMPTY_"))
+			asset_descr.setStyle("-fx-font-size: 24; -fx-opacity: 4.0;");
+		}
+		if (selected.getPurchVal().equals("_EMPTY_")) 
 			cost.setText("");
-		else
+		else {
 			cost.setText(selected.getPurchVal());
+			cost.setStyle("-fx-font-size: 24; -fx-opacity: 1.0;");
+		}
 		
 	}
 	
