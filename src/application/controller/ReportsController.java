@@ -30,6 +30,7 @@ public class ReportsController {
 	@FXML private TableColumn<Asset,String> asset_name_table;
 	@FXML private TableColumn<Asset,String> asset_category_table;
 	@FXML private TableColumn<Asset,String> asset_location_table;
+	@FXML private TableColumn<Asset,String> asset_warranty_table;
 	@FXML private Button viewAssetButton;
 	@FXML private Label result_message;
 	
@@ -77,6 +78,8 @@ public class ReportsController {
 		pvf = new PropertyValueFactory<Asset,String>("category");
 		asset_category_table.setCellValueFactory(pvf);
 		
+		pvf = new PropertyValueFactory<Asset,String>("expDate");
+		asset_warranty_table.setCellValueFactory(pvf);
 	}
 	
 	@FXML public void selectAssetOp() {
