@@ -40,6 +40,11 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="730.0" mnemonicParsing="false" onAction="#showExpiredAssetsOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Expired Assets" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
