@@ -10,9 +10,10 @@ import javafx.scene.control.TextField;
 public class CategoryController 
 {
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField category_name;
 	@FXML private Label result_message;
-	private DataAccessLayer DAL = new DataAccessLayer();
 	
 	@FXML public void saveCategoryOp() 
 	{	

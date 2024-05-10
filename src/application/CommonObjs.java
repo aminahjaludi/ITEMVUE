@@ -2,11 +2,14 @@ package application;
 import java.util.LinkedList;
 
 import application.controller.MainController;
+import data_access_layer.DataAccessLayer;
 import javafx.scene.layout.HBox;
 
 public class CommonObjs 
 {
 	private static CommonObjs commonObjs = new CommonObjs();
+	
+	private DataAccessLayer DAL = new DataAccessLayer();
 	
 	private HBox mainBox;
 	private MainController mainController;
@@ -18,6 +21,10 @@ public class CommonObjs
 	private CommonObjs()
 	{
 		
+	}
+	
+	public DataAccessLayer getDAL() {
+		return DAL;
 	}
 	
 	public static CommonObjs getInstance()

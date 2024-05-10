@@ -12,10 +12,11 @@ import javafx.scene.control.TextArea;
 public class LocationController {
 	
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField location_name;
 	@FXML private TextArea location_description;
 	@FXML private Label result_message;
-	private DataAccessLayer DAL = new DataAccessLayer();
 	
 	@FXML public void saveLocationOp() 
 	{	

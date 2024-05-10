@@ -28,6 +28,8 @@ public class SearchAssetController
 {
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	private MainController mainController = commonObjs.getMainController();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField search_term;
 	@FXML private Label result_message;
 	@FXML private Label asset_name;
@@ -40,14 +42,12 @@ public class SearchAssetController
 	@FXML private Button next_button;
 	@FXML private AnchorPane searchContainer;
 
-	private DataAccessLayer DAL = new DataAccessLayer();
 	private ArrayList<Asset> results;
 	private int resultsCount;
 	private Asset currentAsset;
 	private int currentAssetIndex;
 
 	public void initialize() {
-		
 		//populate Asset Hashmap with existing assets in csv file
 		DAL.storeAssetsFromFile();
 		//disable buttons until search button is pressed and text by calling displayNoResults
@@ -59,7 +59,6 @@ public class SearchAssetController
 		
 		HashMap<String, Category> categoriesMap = DAL.getCategoriesMap();
 		HashMap<String, Location> locationsMap = DAL.getLocationsMap();
-		
 	}
 	
 	public void setResultMessage(String text) {
@@ -108,7 +107,6 @@ public class SearchAssetController
 		delete_button.setDisable(true);
 		prev_button.setDisable(true);
 		next_button.setDisable(true);
-		
 	}
 
 	//when search button is pressed
@@ -116,6 +114,7 @@ public class SearchAssetController
 	{	
 		//retrieve ArrayList of all Assets that contain the searched keyword
 		results = DAL.searchAsset(search_term.getText().toLowerCase());
+
 		//display the number of Asset results
 		resultsCount = results.size();
 		//if the search text field does not contain any keywords, prompt message
@@ -157,50 +156,19 @@ public class SearchAssetController
 	//triggered when user presses edit button after Asset is found
 	@FXML public void editAssetOp() 
 	{
-		mainController.showEditAssetOp();
-		// go to edit asset page
-
-		FXMLLoader editLoader = mainController.getCurrentLoader();
-		// get the loader for the EditAsset file to prompt the UI
-
-		EditAssetController editController = editLoader.getController();
-		// get the EditAssetController object from mainController
+		// set the previous loader to go back after viewing
+		mainController.setPrevLoader(mainController.getCurrentLoader());
+		// set the previous pane to go back after viewing
+		mainController.setPrevPane(mainController.getCurrentPane());
 		
-		editController.storeAssetToEdit(currentAsset);
-		// store the Asset to be edited into the EditAssetController class, and show all existing data of Asset
+		// go to edit asset page
+		mainController.showEditAssetOp();
 
-//		//implement try block in case of file exceptions for the EditAsset FXML file
-//		try 
-//		{
-//			save the current Asset object into currentAsset
-//			currentAsset = results.get(currentAssetIndex);
-//		   
-//			//get the loader for the EditAsset file to prompt the UI
-//		    FXMLLoader editLoader = new FXMLLoader(getClass().getClassLoader().getResource("view/EditAsset.fxml"));
-//		    
-//		    //create AnchorPane for the EditAsset FXML file
-//		    AnchorPane editPane = editLoader.load();
-//		    
-//		    //instantiate a Scene object to be used to create a window for the Edit page
-//			Scene editScene = new Scene(editPane);
-//			
-//		    //instantiate EditAssetController object 
-//			EditAssetController editController = editLoader.getController();
-//			
-//			//store the Asset to be edited into the EditAssetController class, and show all existing data of Asset 
-//			editController.storeAssetToEdit(currentAsset);
-//		
-//			//set the AnchorPane of the SearchAsset.fxml to display the EditAsset.fxml AnchorPane
-//			searchContainer.getChildren().setAll(editPane);
-//			
-//			//change the visibility of the EditAsset.fxml to be visible/true
-//			editController.displayEditContainer();		
-//
-//		} 
-//		//catch block to catch any exceptions if the file directory is not found
-//		catch (IOException e) {
-//		    e.printStackTrace();
-//		}
+		// get the EditAssetController object from mainController
+		EditAssetController editController = mainController.getCurrentLoader().getController();
+		
+		// store the Asset to be edited into the EditAssetController class, and show all existing data of Asset
+		editController.storeAssetToEdit(currentAsset);
 	}
 
 	//triggered when user presses delete
@@ -243,10 +211,13 @@ public class SearchAssetController
 		DAL.deleteAssetData(currentAsset);
 		//prompt delete message
 		
-		initialize();
+		// update assetsMap in DAL
+		DAL.storeAssetsFromFile();
 		
+		// redo search so results are updated
 		searchAssetOp();
 		
+		// set result message
 		result_message.setText(name + " is now deleted!");
 	}
 }

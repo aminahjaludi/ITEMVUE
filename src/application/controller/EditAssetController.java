@@ -29,6 +29,8 @@ public class EditAssetController
 {
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	private MainController mainController = commonObjs.getMainController();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField asset_name;
 	@FXML private TextField cost;
 	@FXML private ComboBox<String> categoryType;
@@ -41,7 +43,6 @@ public class EditAssetController
 	
 	//initialize id for the EditAsset.fxml's AnchorPane //use for visibility
 	@FXML private AnchorPane editContainer;
-	private DataAccessLayer DAL = new DataAccessLayer();
 	//create pre-existing Asset
 	private Asset preAsset;
 	
@@ -134,14 +135,6 @@ public class EditAssetController
 		String descr = preAsset.getDescription();
 		String purchval = preAsset.getPurchVal();
 		String expdate = preAsset.getExpDate();
-		
-		System.out.println(assetName);
-		System.out.println(category);
-		System.out.println(location);
-		System.out.println(purchdate);
-		System.out.println(descr);
-		System.out.println(purchval);
-		System.out.println(expdate);
 		
 		//if user filled out the asset name
 		if(!asset_name.getText().equals(""))
@@ -245,20 +238,24 @@ public class EditAssetController
 						commonObjs.getFavoriteAssets().add(newAsset);
 					}
 					
-					mainController.showManageAssetOp();
+					mainController.previousPage();
 					// go back to the main manage asset page
-					
-					FXMLLoader searchLoader = mainController.getCurrentLoader();
-					// get the loader for the EditAsset file to prompt the UI
 
-					SearchAssetController searchController = searchLoader.getController();
-					// get the EditAssetController object from mainController
+					SearchAssetController searchController = mainController.getCurrentLoader().getController();
+					// get the SearchAssetController object from mainController
+					
+					DAL.storeAssetsFromFile();
+					// update assetsMap in DAL
+					
+					searchController.searchAssetOp();
+					// redo search so results are updated
 					
 					searchController.setResultMessage("Asset edited successfully!");
-					// store the Asset to be edited into the EditAssetController class, and show all existing data of Asset
+					// set result message
+					
 					break;
 
-					case 1:
+				case 1:
 					// if addAsset returns 1, display Asset exists error
 					result_message.setText("Asset " + assetName + " already exists!");
 					break;

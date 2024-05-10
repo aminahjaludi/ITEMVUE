@@ -20,6 +20,8 @@ import javafx.scene.control.DatePicker;
 
 public class CreateAssetController {
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField asset_name;
 	@FXML private TextField cost;
 	@FXML private ComboBox<String> categoryType;
@@ -29,7 +31,6 @@ public class CreateAssetController {
 	@FXML private TextArea asset_descr;
 	@FXML private Label result_message;
 	@FXML private CheckBox favorited;
-	private DataAccessLayer DAL = new DataAccessLayer();
 	//private String selectedCategory;
 	
 	

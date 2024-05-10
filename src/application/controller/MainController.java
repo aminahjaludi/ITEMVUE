@@ -13,9 +13,40 @@ public class MainController {
 	@FXML public HBox mainBox;
 	
 	private FXMLLoader currentLoader;
+	private FXMLLoader previousLoader;
+	private AnchorPane currentPane;
+	private AnchorPane previousPane;
 	
 	public FXMLLoader getCurrentLoader() {
 		return currentLoader;
+	}
+	
+	public void setCurrentLoader(FXMLLoader loader) {
+		currentLoader = loader;
+	}
+	
+	public AnchorPane getCurrentPane() {
+		return currentPane;
+	}
+	
+	public void setCurrentPane(AnchorPane pane) {
+		currentPane = pane;
+	}
+	
+	public FXMLLoader getPrevLoader() {
+		return previousLoader;
+	}
+	
+	public void setPrevLoader(FXMLLoader loader) {
+		previousLoader = loader;
+	}
+	
+	public AnchorPane getPrevPane() {
+		return previousPane;
+	}
+	
+	public void setPrevPane(AnchorPane pane) {
+		previousPane = pane;
 	}
 	
 	@FXML
@@ -24,15 +55,17 @@ public class MainController {
 	}
 	
 	@FXML public void showCategoryOp() {
-		URL url = getClass().getClassLoader().getResource("view/Category.fxml");
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Category.fxml"));
+		currentLoader = loader;
 		
 		try {
-			AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane2 = (AnchorPane) loader.load();
 			
 			if(mainBox.getChildren().size() > 1)
 				mainBox.getChildren().remove(1);
 			
-			mainBox.getChildren().add(pane1);
+			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -42,16 +75,18 @@ public class MainController {
 	}
 
 
-	@FXML public void showHomeOp() {
-		URL url = getClass().getClassLoader().getResource("view/Home.fxml");
+	@FXML public void showHomeOp() {		
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Home.fxml"));
+		currentLoader = loader;
 		
 		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane2 = (AnchorPane) loader.load();
 			
 			if(mainBox.getChildren().size() > 1)
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -60,15 +95,17 @@ public class MainController {
 	}
 
 	@FXML public void showLocationOp() {
-		URL url = getClass().getClassLoader().getResource("view/Location.fxml");
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Location.fxml"));
+		currentLoader = loader;
 		
 		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane2 = (AnchorPane) loader.load();
 			
 			if(mainBox.getChildren().size() > 1)
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -77,15 +114,17 @@ public class MainController {
 	}
 
 	@FXML public void showCreateAssetOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateAsset.fxml");
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/CreateAsset.fxml"));
+		currentLoader = loader;
 		
 		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane2 = (AnchorPane) loader.load();
 			
 			if(mainBox.getChildren().size() > 1)
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -105,6 +144,7 @@ public class MainController {
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -122,6 +162,7 @@ public class MainController {
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -130,15 +171,17 @@ public class MainController {
 	}
 
 	@FXML public void showReportOp() {
-		URL url = getClass().getClassLoader().getResource("view/Report.fxml");
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Report.fxml"));
+		currentLoader = loader;
 		
 		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane2 = (AnchorPane) loader.load();
 			
 			if(mainBox.getChildren().size() > 1)
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -150,6 +193,7 @@ public class MainController {
 	public void showExpiredAssetsOp() {
 		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/ExpiredAssets.fxml"));
 		currentLoader = loader;
+		
 		try {
 			AnchorPane pane2 = (AnchorPane) loader.load();
 			
@@ -157,6 +201,7 @@ public class MainController {
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -167,6 +212,7 @@ public class MainController {
 	public void showAssetInfoOp() {
 		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/AssetInfo.fxml"));
 		currentLoader = loader;
+		
 		try {
 			AnchorPane pane2 = (AnchorPane) loader.load();
 			
@@ -174,6 +220,7 @@ public class MainController {
 				mainBox.getChildren().remove(1);
 			
 			mainBox.getChildren().add(pane2);
+			currentPane = pane2;
 		} 
 		catch (IOException e) 
 		{
@@ -181,4 +228,15 @@ public class MainController {
 		}
 	}
 
+	public void previousPage() {
+		if(mainBox.getChildren().size() > 1)
+			mainBox.getChildren().remove(1);
+		
+		mainBox.getChildren().add(previousPane);
+		currentPane = previousPane;
+		currentLoader = previousLoader;
+		previousLoader = null;
+		previousPane = null;
+	}
+	
 }

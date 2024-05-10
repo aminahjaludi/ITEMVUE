@@ -25,6 +25,8 @@ public class AssetInfoController {
 	
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	private MainController mainController = commonObjs.getMainController();
+	private DataAccessLayer DAL = commonObjs.getDAL();
+	
 	@FXML private TextField asset_name;
 	@FXML private TextField cost;
 	@FXML private ComboBox<String> categoryType;
@@ -37,7 +39,6 @@ public class AssetInfoController {
 	
 	//initialize id for the EditAsset.fxml's AnchorPane //use for visibility
 	@FXML private AnchorPane editContainer;
-	private DataAccessLayer DAL = new DataAccessLayer();
 	
 	private Asset selectedAsset;
 	
@@ -124,8 +125,7 @@ public class AssetInfoController {
 	@FXML public void backOp()
 	{
 		//use instance of mainController to show ExpiredAssets page
-		mainController.showExpiredAssetsOp();
-	
+		mainController.previousPage();
 	}
 	
 	

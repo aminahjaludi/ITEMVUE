@@ -5,6 +5,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,9 +23,7 @@ public class DataAccessLayer {
     //create HashMaps for each object
     private HashMap<String, Location> locationsMap;
     private HashMap<String, Category> categoriesMap;
-    private HashMap<String, Asset> assetsMap;
-    
-	
+    public HashMap<String, Asset> assetsMap;
     
     //DAL constructor
     public DataAccessLayer()
@@ -346,8 +345,8 @@ public class DataAccessLayer {
             }
             //clode filereaders, no more lines to read from
             br.close();
-          //store populated hashmap into class location hashmap
-            assetsMap = tempMap;   
+            //store populated hashmap into class location hashmap
+            assetsMap = tempMap;
         }
         catch (IOException e) 
         {
@@ -370,9 +369,41 @@ public class DataAccessLayer {
         //return the ArrayList of all Assets that have the same keyword that was searched for
         return results;
     }
-
     
-
+    // Returns a list of assets that are in the category
+    public Collection<Asset> filterAssetByCategory(String category) {
+    	//initialize an empty ArrayList to save all Assets that contain the keyword
+    	Collection<Asset> results = new ArrayList<>();
+        //iterate through the assets HashMap
+        for (Map.Entry<String, Asset> entry : assetsMap.entrySet()) {
+            Asset temp = entry.getValue();
+            //if the selected category matches the category of current asset,
+            if (temp.getCategory().equals(category)) {
+            	// add the asset to results
+            	results.add(entry.getValue());
+            }
+        }
+        //return the ArrayList of all Assets that have the same keyword that was searched for
+        return results;
+    }
+    
+    // Returns a list of assets that are in the location
+    public Collection<Asset> filterAssetByLocation(String location) {
+    	//initialize an empty ArrayList to save all Assets that contain the keyword
+        Collection<Asset> results = new ArrayList<>();
+        //iterate through the assets HashMap
+        for (Map.Entry<String, Asset> entry : assetsMap.entrySet()) {
+            Asset temp = entry.getValue();
+            //if the selected location matches the location of current asset,
+            if (temp.getLocation().equals(location)) {
+            	// add the asset to results
+            	results.add(entry.getValue());
+            }
+        }
+        //return the ArrayList of all Assets that have the same keyword that was searched for
+        return results;
+    }
+    
     //Takes the original Asset that is being overwritten and the new Asset that will overwrite
     //the original, calls delete to remove Asset from HashMap, returns value to determine
     //result_message

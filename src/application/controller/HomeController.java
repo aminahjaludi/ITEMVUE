@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class HomeController {
 	
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private DataAccessLayer DAL = commonObjs.getDAL();
 	
 	@FXML private TableView<Asset> favorites_table;
 	@FXML private TableColumn<Asset,String> fave_asset;
@@ -26,7 +27,7 @@ public class HomeController {
 	@FXML private TableColumn<Asset,String> recent_category;
 	
 	@FXML public void initialize() 
-	{
+	{	
 		recents_table.getItems().clear();
 		
 		//Set tables font size
@@ -37,7 +38,6 @@ public class HomeController {
 		favorites_table.setPlaceholder(new Label("No favorite assets"));
 		recents_table.setPlaceholder(new Label("No recently added assets"));
 
-		DataAccessLayer DAL = new DataAccessLayer();
 		DAL.storeAssetsFromFile();
 		
 		Collection<Asset> favorites = commonObjs.getFavoriteAssets();;

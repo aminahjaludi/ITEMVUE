@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <HBox fx:id="mainBox" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: black;">
          <children>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="250.0" mnemonicParsing="false" onAction="#showHomeOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Home" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="208.0" mnemonicParsing="false" onAction="#showHomeOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Home" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="330.0" mnemonicParsing="false" onAction="#showCategoryOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Category" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="288.0" mnemonicParsing="false" onAction="#showCategoryOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Category" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="410.0" mnemonicParsing="false" onAction="#showLocationOp" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: black;" text="Create Storage Location" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="368.0" mnemonicParsing="false" onAction="#showLocationOp" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: black;" text="Create Storage Location" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="490.0" mnemonicParsing="false" onAction="#showCreateAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Asset" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="448.0" mnemonicParsing="false" onAction="#showCreateAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Asset" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="570.0" mnemonicParsing="false" onAction="#showManageAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Manage Assets" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="528.0" mnemonicParsing="false" onAction="#showManageAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Manage Assets" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="650.0" mnemonicParsing="false" onAction="#showReportOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Reports" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="608.0" mnemonicParsing="false" onAction="#showReportOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Reports" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
@@ -40,7 +40,7 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="730.0" mnemonicParsing="false" onAction="#showExpiredAssetsOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Expired Assets" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="688.0" mnemonicParsing="false" onAction="#showExpiredAssetsOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Expired Assets" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>

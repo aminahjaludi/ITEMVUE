@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 import application.Asset;
 import application.CommonObjs;
+import data_access_layer.DataAccessLayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -20,6 +21,7 @@ public class ExpiredAlertController {
 
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	private MainController mainController = commonObjs.getMainController();
+	
 	@FXML private Button OKBtn;
 	@FXML private Button showMoreBtn;
 	@FXML private Label expiredAsset;

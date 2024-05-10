@@ -18,11 +18,11 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	private DataAccessLayer DAL = commonObjs.getDAL();
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			DataAccessLayer DAL = new DataAccessLayer();
 			DAL.storeAssetsFromFile();
 			
 			//Initialize commonObjs recentAssets
