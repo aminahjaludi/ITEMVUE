@@ -11,36 +11,36 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: black;">
          <children>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="208.0" mnemonicParsing="false" onAction="#showHomeOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Home" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="196.0" mnemonicParsing="false" onAction="#showHomeOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Home" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="288.0" mnemonicParsing="false" onAction="#showCategoryOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Category" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="276.0" mnemonicParsing="false" onAction="#showCategoryOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Category" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="368.0" mnemonicParsing="false" onAction="#showLocationOp" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: black;" text="Create Storage Location" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="356.0" mnemonicParsing="false" onAction="#showLocationOp" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: black;" text="Create Storage Location" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="448.0" mnemonicParsing="false" onAction="#showCreateAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Asset" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="436.0" mnemonicParsing="false" onAction="#showCreateAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Create Asset" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="528.0" mnemonicParsing="false" onAction="#showManageAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Manage Assets" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="516.0" mnemonicParsing="false" onAction="#showManageAssetOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Manage Assets" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="608.0" mnemonicParsing="false" onAction="#showReportOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Reports" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="596.0" mnemonicParsing="false" onAction="#showReportOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Reports" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <ImageView fitHeight="190.0" fitWidth="364.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="190.0" fitWidth="364.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="688.0" mnemonicParsing="false" onAction="#showExpiredAssetsOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Expired Assets" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="36.0" layoutY="676.0" mnemonicParsing="false" onAction="#showExpiredAssetsOp" prefHeight="62.0" prefWidth="280.0" style="-fx-background-color: black;" text="Expired Assets" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>

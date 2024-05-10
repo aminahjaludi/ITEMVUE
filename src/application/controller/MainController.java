@@ -171,7 +171,7 @@ public class MainController {
 	}
 
 	@FXML public void showReportOp() {
-		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Report.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("view/Reports.fxml"));
 		currentLoader = loader;
 		
 		try {

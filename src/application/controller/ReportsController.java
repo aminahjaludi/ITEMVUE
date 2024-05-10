@@ -52,7 +52,7 @@ public class ReportsController {
 		
 		//prompt Categories and Locations combobox with message
 		categoryType.setPromptText("Select a Category...");
-		locationType.setPromptText("Select a Location..");
+		locationType.setPromptText("Select a Location...");
 		
 		// set styles
 		categoryType.setStyle("-fx-font-size: 24;");

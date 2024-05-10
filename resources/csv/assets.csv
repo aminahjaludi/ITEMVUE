@@ -1,6 +1,6 @@
 Asset Name,Category,Location,Purchase Date,Description,Purchase Value,Warranty Expiration Date,Favorited
-PS4,Electronics,Closet,2017-04-13,_EMPTY_,_EMPTY_,2018-05-10,true
-Bridgerton: The Duke,Books,Bookshelf,_EMPTY_,Fantasy book.,12,_EMPTY_,true
-IPad,Electronics,Cupboard,2021-04-30,My IPad,$500,2021-05-30,true
-IPhone,Electronics,Cupboard,_EMPTY_,_EMPTY_,_EMPTY_,2023-10-29,false
-Aloha Dress,Clothes,Closet,2024-04-17,_EMPTY_,_EMPTY_,_EMPTY_,true
+PS4,Electronics,Drawer,2018-04-13,_EMPTY_,_EMPTY_,2019-04-13,false
+IPad,Electronics,Desk,2023-04-30,ipad air,$500,2024-04-30,true
+IPhone,Electronics,Desk,2022-10-29,_EMPTY_,$1200,2023-10-29,true
+Aloha Dress,Clothes,Closet,2024-05-10,_EMPTY_,_EMPTY_,2024-06-10,true
+Ribbon,Clothes,Closet,2024-05-10,red ribbon,_EMPTY_,_EMPTY_,false
