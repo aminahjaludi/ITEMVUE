@@ -13,7 +13,7 @@ ITEMVUE is a powerful and intuitive desktop application designed to help users e
 * Price: The purchase price of the asset, which can be useful for budgeting or insurance purposes.
 * Category: A customizable category that helps in organizing assets into relevant groups (e.g., Electronics, Furniture, Clothing).
 * Location: The physical location where the asset is stored, making it easier to locate items within your home or office.
-* 
+  
 **2. User-Friendly Interface:**
 * JavaFX-Based Design: ITEMVUE features a modern, responsive interface built on JavaFX. The clean, intuitive design ensures that users can navigate through their assets effortlessly, with a visually appealing layout that supports both list and grid views.
 * Easy Navigation: Clear menus, tabs, and search functionalities make it straightforward to access, view, and manage asset information.
