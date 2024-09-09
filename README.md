@@ -2,6 +2,8 @@
 
 ITEMVUE is a powerful and intuitive desktop application designed to help users efficiently manage and track their personal belongings. Leveraging the capabilities of the JavaFX framework, ITEMVUE provides a sleek, modern interface for organizing and maintaining comprehensive records of assets. Whether you're managing a collection of valuable items, keeping track of household possessions, or simply organizing your personal belongings, ITEMVUE offers a versatile solution tailored to meet your needs.
 
+Project demo: https://youtu.be/7jblkJ7DlMU
+
 ## Core Features
 
 ### 1. Asset Entry and Management:
